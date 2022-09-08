@@ -14,6 +14,7 @@ output:
 ---
 
 ```{r include=FALSE}
+library(tufte)
 library(tidyverse)
 library(datasauRus)
 options(
@@ -88,13 +89,12 @@ hotdogs=read.table("Hdcalsod.TXT", header=T)
 colnames(hotdogs)
 hotdogs$Calories
 
-attach(hotdogs)
+attach(hotdogs) #Attach attributes to the dataset so we don't have to type hotdogs$ every time we use it
 
 plot(Calories, Sodium, xlab="Calories", ylab="Sodium", pch=16)
 cor(Calories, Sodium)
 
-plot(Calories, Sodium, xlab="Calories", ylab="Sodium", 
-	col=factor(Type), pch=16)
+plot(Calories, Sodium, xlab="Calories", ylab="Sodium", col=factor(Type), pch=16)
 ```
 
 Let's try a different data set. This one about 50 states.
@@ -103,11 +103,10 @@ Let's try a different data set. This one about 50 states.
 hsgrads=read.table("raingrad.TXT", header=T, sep="\t")
 attach(hsgrads)
 
-plot(Rain, Education, 
-      xlab="Rainfall", ylab="Average Grade Level", pch=16)
+plot(Rain, Education, xlab="Rainfall", ylab="Average Grade Level", pch=16)
 cor(Rain, Education)
 
-args(cor)
+args(cor) #Arguments of the function cor
 ```
 
 And one final set of flying times.
@@ -117,7 +116,7 @@ delta=read.table("Deltafly.TXT", header=T)
 attach(delta)
 
 hist(Miles, xlab="Distance (Miles)")
-hist(DepHr, main=NULL, xlab="Departure Hour (24hour)", xlim=c(0,24))
+hist(DepHr, main=NULL, xlab="Departure Hour (24hour)", xlim=c(0,24)) #Main title empty
 hist(TravTime, main=NULL, xlab="Travel Time (Hours)")
 
 plot(Miles, TravTime, xlab="Distance (Miles)", ylab="Travel Time (Hours)")
